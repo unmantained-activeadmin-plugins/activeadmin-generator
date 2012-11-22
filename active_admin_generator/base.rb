@@ -5,6 +5,13 @@ module ActiveAdminGenerator
       "Base"
     end
 
+    def apply?
+      true
+    end
+
+    def apply!
+    end
+
     def format(text)
       string = ""
       if title
