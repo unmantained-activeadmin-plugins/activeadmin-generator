@@ -21,7 +21,7 @@ module ::ActiveAdminGenerator
 
     def copy_file(source, dest = source)
       source = File.join(base_path, "templates", source)
-      context.create_file dest, nil, config do
+      context.create_file dest do
         open(source)
       end
     end
