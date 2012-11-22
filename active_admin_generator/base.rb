@@ -3,11 +3,12 @@ require 'active_support/core_ext'
 module ::ActiveAdminGenerator
   class Base
 
-    attr_reader :context
+    attr_reader :context, :base_path
     delegate :empty_directory, :gem, :git, :remove_file, :append_file, to: :context
 
     def initialize(base_path, context)
       @context = context
+      @base_path = base_path
     end
 
     def title
@@ -19,7 +20,7 @@ module ::ActiveAdminGenerator
     end
 
     def copy_file(source, dest = source)
-      source = File.join("templates", source)
+      source = File.join(base_path, "templates", source)
       puts "#{source} -> #{dest}"
       context.copy_file source, dest
     end
