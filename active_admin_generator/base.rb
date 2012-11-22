@@ -6,7 +6,7 @@ module ::ActiveAdminGenerator
     attr_reader :context
     delegate :empty_directory, :gem, :git, :remove_file, :append_file, to: :context
 
-    def initialize(context)
+    def initialize(base_path, context)
       @context = context
     end
 
