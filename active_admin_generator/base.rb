@@ -22,7 +22,7 @@ module ::ActiveAdminGenerator
     def copy_file(source, dest = source)
       source = File.join(base_path, "templates", source)
       context.create_file dest do
-        open(source)
+        open(source).read
       end
     end
 
