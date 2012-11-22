@@ -3,7 +3,7 @@ def run_bundle ; end
 module Thor::Actions
   alias_method :old_source_paths, :source_paths
   def source_paths
-    old_source_paths + [ File.expand_path(File.dirname(__FILE__)) ]
+    old_source_paths + [ File.dirname(__FILE__) ]
   end
 end
 
