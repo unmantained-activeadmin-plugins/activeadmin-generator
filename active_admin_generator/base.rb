@@ -1,5 +1,14 @@
-module ActiveAdminGenerator
-  module Base
+require 'active_support/core_ext'
+
+module ::ActiveAdminGenerator
+  class Base
+
+    attr_reader :context
+    delegate :empty_directory, :gem, :git, :remove_file, :append_file, to: :context
+
+    def initialize(context)
+      @context = context
+    end
 
     def title
       "Base"
@@ -9,7 +18,21 @@ module ActiveAdminGenerator
       true
     end
 
+    def copy_file(source, dest = source)
+      source = File.join("templates", source)
+      puts "#{source} -> #{dest}"
+      context.copy_file source, dest
+    end
+
+    def commit_all(message)
+      git add: "-A ."
+      git :commit => "-m '#{message}'"
+    end
+
     def apply!
+      say "=" * 80
+      say "Welcome to ActiveAdmin Generator! :)".center(80) + "\n"
+      say "=" * 80
     end
 
     def format(text)
@@ -24,11 +47,11 @@ module ActiveAdminGenerator
     end
 
     def say(text)
-      say format(text)
+      @context.say format(text)
     end
 
     def ask(question)
-      ask format(question)
+      @context.ask format(question)
     end
 
     def choose(question, choices)
@@ -56,3 +79,4 @@ module ActiveAdminGenerator
 
   end
 end
+
