@@ -21,8 +21,9 @@ module ::ActiveAdminGenerator
 
     def copy_file(source, dest = source)
       source = File.join(base_path, "templates", source)
-      puts "#{source} -> #{dest}"
-      context.copy_file source, dest
+      context.create_file dest, nil, config do
+        open(source)
+      end
     end
 
     def commit_all(message)
