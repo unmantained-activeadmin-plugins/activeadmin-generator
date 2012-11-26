@@ -32,7 +32,7 @@ module ::Bricks
     end
 
     def configure_pg
-      gem 'pg'
+      gem 'pg', '0.13.2'
     end
 
   end
