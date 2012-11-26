@@ -1,12 +1,14 @@
 require 'active_support/core_ext'
 
-module ::ActiveAdminGenerator
+module ::Bricks
   class Base
 
     attr_reader :context, :base_path
-    delegate :empty_directory, :gem, :git, :remove_file, :append_file, to: :context
 
-    def initialize(base_path, context)
+    delegate :directory, :copy_file, :remove_dir, :gsub_file, :rake, :generate, :route, :empty_directory,
+             :gem, :git, :remove_file, :append_file, to: :context
+
+    def initialize(context)
       @context = context
       @base_path = base_path
     end
@@ -15,15 +17,15 @@ module ::ActiveAdminGenerator
       "Base"
     end
 
-    def apply?
-      true
+    def template(source)
+      content = open(File.expand_path(context.find_in_source_paths(source.to_s))) {|input| input.binmode.read }
+      context.copy_file source do
+        ERB.new(content).result(binding)
+      end
     end
 
-    def copy_file(source, dest = source)
-      source = File.join(base_path, "templates", source)
-      context.create_file dest do
-        open(source).read
-      end
+    def apply?
+      true
     end
 
     def commit_all(message)
@@ -31,7 +33,7 @@ module ::ActiveAdminGenerator
       git :commit => "-m '#{message}'"
     end
 
-    def apply!
+    def before_bundle
       say "=" * 80
       say "Welcome to ActiveAdmin Generator! :)".center(80) + "\n"
       say "=" * 80
@@ -57,11 +59,11 @@ module ::ActiveAdminGenerator
     end
 
     def choose(question, choices)
-      title(question)
+      say question
       values = {}
       choices.each_with_index do |choice,i|
         values[(i + 1).to_s] = choice[1]
-        title("#{i.next.to_s}) #{choice[0]}")
+        say "#{i.next.to_s}) #{choice[0]}"
       end
       answer = ask("Enter your selection:") while !values.keys.include?(answer)
       values[answer]

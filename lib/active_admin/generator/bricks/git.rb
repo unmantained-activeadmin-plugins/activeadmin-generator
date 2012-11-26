@@ -1,6 +1,6 @@
-module ::ActiveAdminGenerator
+module ::Bricks
   class Git < Base
-    def apply!
+    def before_bundle
       git :init
 
       append_file ".gitignore", <<-END

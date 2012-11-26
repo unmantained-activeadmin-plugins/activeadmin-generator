@@ -1,0 +1,11 @@
+doctype 5
+html
+  head= render "head"
+  body
+    .hive: .cell_100
+      = render "header"
+      section.page_content= yield
+      = render "footer"
+
+= render "js_includes"
+

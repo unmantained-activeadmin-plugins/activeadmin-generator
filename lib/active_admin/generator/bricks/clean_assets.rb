@@ -1,6 +1,6 @@
-module ::ActiveAdminGenerator
+module ::Bricks
   class CleanAssets < Base
-    def apply!
+    def before_bundle
       remove_file 'public/index.html'
       remove_file 'app/assets/images/rails.png'
 
