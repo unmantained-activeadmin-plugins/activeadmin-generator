@@ -19,5 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "thor"
   gem.add_dependency "railties"
   gem.add_dependency "s3"
+  gem.add_dependency "heroku-api"
 end
 

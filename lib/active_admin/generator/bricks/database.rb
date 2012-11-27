@@ -24,15 +24,15 @@ module ::Bricks
     end
 
     def configure_sqlite
-      gem 'sqlite3'
+      gem 'sqlite3', group: 'development'
     end
 
     def configure_mysql
-      gem 'mysql2'
+      gem 'mysql2', group: 'development'
     end
 
     def configure_pg
-      gem 'pg', '0.13.2'
+      gem 'pg', '0.13.2', group: 'development'
     end
 
   end

@@ -5,8 +5,9 @@ module ::Bricks
 
     attr_reader :context, :base_path
 
-    delegate :directory, :copy_file, :remove_dir, :gsub_file, :rake, :generate, :route, :empty_directory,
-             :gem, :git, :remove_file, :append_file, to: :context
+    delegate :inject_into_file, :directory, :copy_file, :remove_dir, :gsub_file,
+             :rake, :generate, :route, :empty_directory, :gem, :git, :remove_file,
+             :append_file, to: :context
 
     def initialize(context)
       @context = context
@@ -30,7 +31,7 @@ module ::Bricks
 
     def commit_all(message)
       git add: "-A ."
-      git :commit => "-m '#{message}'"
+      git commit: "-m '#{message}'"
     end
 
     def before_bundle
