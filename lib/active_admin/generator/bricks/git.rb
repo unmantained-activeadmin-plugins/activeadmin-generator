@@ -5,6 +5,7 @@ module ::Bricks
 
       append_file ".gitignore", <<-END
       *.swp
+      .DS_Store
       .sass-cache
       root.dir
       .rake_tasks~

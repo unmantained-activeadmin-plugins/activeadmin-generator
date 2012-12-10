@@ -15,7 +15,7 @@ module ::Bricks
     end
 
     def title
-      "Base"
+      self.class.name
     end
 
     def template(source)
@@ -32,12 +32,6 @@ module ::Bricks
     def commit_all(message)
       git add: "-A ."
       git commit: "-m '#{message}'"
-    end
-
-    def before_bundle
-      say "=" * 80
-      say "Welcome to ActiveAdmin Generator! :)".center(80) + "\n"
-      say "=" * 80
     end
 
     def format(text)

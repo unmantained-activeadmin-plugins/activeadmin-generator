@@ -18,6 +18,10 @@ module ::Bricks
       apply_i18n_routes!
     end
 
+    def deflate_assets
+      copy_file "config.ru"
+    end
+
     def apply_i18n_routes!
       gem 'i18n_routing'
       copy_file "config/locales/it.yml"

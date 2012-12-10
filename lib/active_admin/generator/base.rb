@@ -1,5 +1,5 @@
 class Base
-  BRICKS = %w(base git clean_assets frontend database heroku active_admin active_admin_extras)
+  BRICKS = %w(init git clean_assets errbit frontend database heroku active_admin active_admin_extras)
   attr_reader :context
 
   def initialize(context)
@@ -7,6 +7,7 @@ class Base
   end
 
   def require_bricks
+    context.apply "bricks/base.rb"
     BRICKS.each do |brick_module|
       context.apply "bricks/#{brick_module}.rb"
     end
@@ -14,13 +15,9 @@ class Base
 
   def bricks
     @bricks ||= BRICKS.map do |brick_module|
-      brick_class = "bricks/#{brick_module}".camelize.constantize rescue nil
-      if brick_class
-        brick = brick_class.new(context)
-        brick.apply? ? brick : nil
-      else
-        nil
-      end
+      brick_class = "bricks/#{brick_module}".camelize.constantize
+      brick = brick_class.new(context)
+      brick.apply? ? brick : nil
     end.compact
   end
 
@@ -40,8 +37,8 @@ class Base
 
   def hook(name)
     bricks.each do |brick|
+      puts brick.class.name
       if brick.respond_to? name
-        context.send :log, name.to_s.titleize, "brick: #{brick.title}"
         brick.send(name)
       end
     end

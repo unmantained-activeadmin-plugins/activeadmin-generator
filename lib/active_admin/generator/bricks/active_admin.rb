@@ -3,7 +3,8 @@ module ::Bricks
     def before_bundle
       gem "activeadmin"
       gem "meta_search"
-      @site_title = ask("Name to be shown in admin backend")
+      copy_file "config/locales/devise.it.yml"
+      @site_title = ENV['APP_NAME']
     end
 
     def after_bundle

@@ -20,5 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "railties"
   gem.add_dependency "s3"
   gem.add_dependency "heroku-api"
+  gem.add_dependency "mechanize"
 end
 
