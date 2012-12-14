@@ -26,15 +26,19 @@ module ::Bricks
           say "Name available!"
           @heroku_app = heroku.post_app('name' => @heroku_appname)
           say "Heroku app created!"
-          @heroku_collaborators.each do |email|
-            say "Adding #{email} as collaborator"
-            heroku.post_collaborator(@heroku_appname, email)
-            say "#{email} added as collaborator"
-          end
         rescue ::Heroku::API::Errors::Forbidden
           say "Name already taken! :("
         end
       end while @heroku_app.blank?
+
+      @heroku_collaborators.each do |email|
+        say "Adding #{email} as collaborator"
+        heroku.post_collaborator(@heroku_appname, email)
+        say "#{email} added as collaborator"
+      end
+
+      say "Adding user-env-compile feature..."
+      heroku.post_feature('user-env-compile', @heroku_appname)
 
       git remote: "add heroku #{@heroku_app.body['git_url']}"
 
