@@ -1,3 +1,6 @@
 it:
   resources:
     static: 'statiche'
+
+  named_routes_path:
+    foo: 'bar'

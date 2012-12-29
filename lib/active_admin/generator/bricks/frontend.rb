@@ -7,6 +7,9 @@ module ::Bricks
       gem "sextant"
       gem "modernizr-rails"
       gem "hive-rails", github: 'stefanoverna/hive-rails', branch: 'master'
+      gem "sprockets-image_compressor"
+      gem 'better_errors'
+      gem 'binding_of_caller'
       commit_all "Added frontend gems"
 
       remove_dir 'app'
@@ -16,10 +19,6 @@ module ::Bricks
       commit_all "Added basic frontend skeleton"
 
       apply_i18n_routes!
-    end
-
-    def deflate_assets
-      copy_file "config.ru"
     end
 
     def apply_i18n_routes!
