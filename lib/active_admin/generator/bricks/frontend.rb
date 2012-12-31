@@ -19,12 +19,17 @@ module ::Bricks
       commit_all "Added basic frontend skeleton"
 
       apply_i18n_routes!
+      apply_letter_opener!
     end
 
     def apply_i18n_routes!
       gem 'i18n_routing'
       copy_file "config/locales/it.yml"
       commit_all "Added i18n routes"
+    end
+
+    def apply_letter_opener!
+      inject_into_file "config/environments/development.rb", "  config.action_mailer.delivery_method = :letter_opener", after: 'config.assets.debug = true'
     end
 
   end

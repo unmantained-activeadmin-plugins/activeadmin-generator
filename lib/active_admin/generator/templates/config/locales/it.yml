@@ -4,3 +4,14 @@ it:
 
   named_routes_path:
     foo: 'bar'
+
+  activerecord:
+    models:
+      foobar:
+        one: "Antano"
+        other: "Antani"
+
+  attributes:
+    _destroy: "Elimina"
+    title: "Titolo"
+    name: "Nome"
