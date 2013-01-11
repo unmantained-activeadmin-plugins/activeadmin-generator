@@ -8,6 +8,7 @@ module ::Bricks
       gem 'activeadmin-gallery', github: 'stefanoverna/activeadmin-gallery', branch: 'master'
       gem 'activeadmin-extra', github: 'stefanoverna/activeadmin-extra', branch: 'master'
       gem 'activeadmin-seo', github: 'nebirhos/activeadmin-seo', branch: 'master'
+      gem 'activeadmin-sortable-tree', github: 'nebirhos/activeadmin-sortable-tree', branch: 'master'
 
       commit_all "Added ActiveAdmin extra gems"
     end
