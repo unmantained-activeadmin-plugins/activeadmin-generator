@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    activeadmin-generator (0.0.8)
+    activeadmin-generator (0.0.9)
       heroku-api
       mechanize
       railties
