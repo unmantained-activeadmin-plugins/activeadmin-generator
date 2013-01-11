@@ -1,11 +1,12 @@
 doctype 5
 html
-  head= render "head"
+  head= render "shared/head"
   body
     .hive: .cell_100
-      = render "header"
+      = render "shared/flash_messages"
+      = render "shared/header"
       section.page_content= yield
-      = render "footer"
+      = render "shared/footer"
 
-= render "js_includes"
+= render "shared/js_includes"
 

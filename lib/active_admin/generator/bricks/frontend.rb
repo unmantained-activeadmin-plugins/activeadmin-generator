@@ -3,13 +3,11 @@ module ::Bricks
     def before_bundle
       gem "rails-i18n"
       gem "slim-rails"
-      gem "compass-rails"
-      gem "sextant"
-      gem "modernizr-rails"
+      gem "compass-rails", group: :assets
+      gem "sextant", group: :development
+      gem "modernizr-rails", group: :assets
       gem "hive-rails", github: 'stefanoverna/hive-rails', branch: 'master'
-      gem "sprockets-image_compressor"
-      gem 'better_errors'
-      gem 'binding_of_caller'
+      gem "sprockets-image_compressor", group: :production
       commit_all "Added frontend gems"
 
       remove_dir 'app'
