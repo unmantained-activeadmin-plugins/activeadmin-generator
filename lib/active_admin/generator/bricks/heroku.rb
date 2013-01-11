@@ -45,8 +45,8 @@ module ::Bricks
       gsub_file "config/environments/production.rb", /Don't fallback to assets pipeline/, "Fallback to assets pipeline"
       gsub_file "config/environments/production.rb", /config\.assets\.compile = false/, "config.assets.compile = true"
       gsub_file "config/environments/production.rb", /config\.serve_static_assets = false/, "config.serve_static_assets = true"
-      inject_into_file "config/environments/production.rb", '  config.static_cache_control = "public, max-age=2592000"', after: "config.serve_static_assets = true"
-      inject_into_file "config/environments/production.rb", '  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater', after: "config.serve_static_assets = true"
+      inject_into_file "config/environments/production.rb", "  config.static_cache_control = 'public, max-age=2592000'\n", after: "config.serve_static_assets = true\n"
+      inject_into_file "config/environments/production.rb", "  config.middleware.insert_before ActionDispatch::Static, Rack::Deflater\n", after: "config.serve_static_assets = true\n"
       inject_into_file "config/application.rb", "  config.assets.initialize_on_precompile = false\n", after: "config.assets.enabled = true\n"
 
       @access_key = ENV['AMAZON_ACCESS_KEY_ID'] || ask("Amazon access key ID: ")

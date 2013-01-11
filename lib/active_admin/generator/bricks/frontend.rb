@@ -27,7 +27,7 @@ module ::Bricks
     end
 
     def apply_letter_opener!
-      inject_into_file "config/environments/development.rb", "  config.action_mailer.delivery_method = :letter_opener", after: 'config.assets.debug = true'
+      inject_into_file "config/environments/development.rb", "  config.action_mailer.delivery_method = :letter_opener\n", after: "config.assets.debug = true\n"
     end
 
   end
