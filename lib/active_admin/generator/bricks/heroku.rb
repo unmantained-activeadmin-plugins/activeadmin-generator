@@ -83,7 +83,7 @@ module ::Bricks
       )
 
       gem 'fog', group: 'production'
-      gem 'pg', '0.13.2', group: 'production'
+      gem 'pg', group: 'production'
 
       commit_all "Configured Heroku and S3"
     end
