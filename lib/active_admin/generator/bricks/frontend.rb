@@ -7,7 +7,6 @@ module ::Bricks
       gem "sextant", group: :development
       gem "letter_opener", group: :development
       gem "modernizr-rails", group: :assets
-      gem "hive-rails", github: 'stefanoverna/hive-rails', branch: 'master'
       gem "sprockets-image_compressor", group: :production
       commit_all "Added frontend gems"
 
