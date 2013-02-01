@@ -4,7 +4,7 @@
 
 ```
 gem install activeadmin-generator
-activeadmin-generator new my_app
+activeadmin-generate new my_app
 ```
 
 ## Default configurations
