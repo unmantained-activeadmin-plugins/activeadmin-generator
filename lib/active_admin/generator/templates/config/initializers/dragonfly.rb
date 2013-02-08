@@ -8,15 +8,11 @@ if Rails.env.production?
   app.configure do |c|
     c.define_url do |app, job, opts|
       thumb = AssetThumb.find_by_job(job.serialize)
-      if thumb
-        app.datastore.url_for(thumb.uid)
-      else
-        app.server.url_for(job)
+      if !thumb
+        uid = job.store
+        thumb = AssetThumb.create!(uid: uid, job: job.serialize)
       end
-    end
-    c.server.before_serve do |job, env|
-      uid = job.store
-      AssetThumb.create!(uid: uid, job: job.serialize)
+      app.datastore.url_for(thumb.uid)
     end
   end
   app.datastore = Dragonfly::DataStorage::S3DataStore.new
