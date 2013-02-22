@@ -3,7 +3,7 @@ app = Dragonfly[:images]
 
 app.configure_with(:imagemagick)
 app.configure_with(:rails)
-if Rails.env.production?
+if ENV['S3_BUCKET']
   app.cache_duration = 3600*24*365*3
   app.configure do |c|
     c.define_url do |app, job, opts|
