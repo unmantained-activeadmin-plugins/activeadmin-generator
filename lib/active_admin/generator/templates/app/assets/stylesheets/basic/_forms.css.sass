@@ -1,0 +1,36 @@
+/* BASIC FORMS STYLE */
+form.standard-form
+  fieldset
+    legend
+    label
+      span
+    input
+    input, textarea, select
+    input[type="text"], input[type="password"], textarea
+    input[type="radio"], input[type="checkbox"]
+    textarea
+    select
+    div
+      &.field
+        .help-text
+      &.required
+        label
+          &:before
+            content: "* "
+      &.error
+        label
+          color: $c-red
+        input[type="text"],input[type="password"]
+        .errorlist
+          li
+            font-style: italic
+            padding-left: 15px
+            font-size: 90%
+            &:before
+              display: inline
+      &.inline
+        display: inline
+      &.short
+        width: 30%
+      &.medium
+        width: 45%
