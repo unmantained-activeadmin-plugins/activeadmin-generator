@@ -1,0 +1,53 @@
+/* STYLES FOR ARTICLES AND TYPO SECTIONS */
+.cms
+  $cms-header-max: 1.5em !default
+  $cms-margin: 5px !default
+  h1, h2, h3, h4, h5
+    +special-font($cms-margin)
+  h1
+    font-size: 100%
+  h2
+    font-size: 85%
+  h3
+    font-size: 75%
+  img
+    margin: $cms-margin 0
+    vertical-align: middle
+    &.right
+      float: right
+      margin: $cms-margin 0 $cms-margin $cms-margin
+    &.left
+      float: left
+      margin: $cms-margin $cms-margin $cms-margin 0
+    &.center
+      display: block
+      margin: $cms-margin auto
+  p
+  dl
+    dt
+    dd
+  ul, ol
+    margin: $cms-margin * 2 $cms-margin * 4
+    li
+      a
+        &:hover
+  ul
+    list-style: disc
+    li
+      line-height: 1.5em
+      &:before
+  a
+    &:hover
+  em
+  strong
+  img
+  blockquote
+    font-style: italic
+    padding: $cms-margin $cms-margin * 4
+  pre
+    line-height: 1.2em
+    font-size: 1.1em
+    font-family: "Courier New", Courier, monospace
+    margin: 0.5 0
+    padding-left: 2em
+  code
