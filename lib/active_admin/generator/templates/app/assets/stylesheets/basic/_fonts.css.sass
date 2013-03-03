@@ -1,4 +1,33 @@
 /* Fonts */
+// set the refers name of the special font you wish to use
+// put your font into /css/fonts/ directory
 
-// +font-face("Font Name", font-files("font.ttf", "font.woff"), "font.eot", normal, normal)
+@font-face
+  font-family: "BebasNeueRegular"
+  src: url("fonts/BebasNeue-webfont.eot")
+  src: url("fonts/BebasNeue-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/BebasNeue-webfont.woff") format("woff"), url("fonts/BebasNeue-webfont.ttf") format("truetype"), url("fonts/BebasNeue-webfont.svg#BebasNeueRegular") format("svg")
+  font-weight: normal
+  font-style: normal
 
+=font-base
+  line-height: 1.2em
+  font-smooth: always
+  zoom: 1
+  -webkit-font-smoothing: antialiased
+  -webkit-text-size-adjust: 100%
+  -ms-text-size-adjust: 100%
+
+=special-font($size: 1em)
+  +font-base
+  font-family: "BebasNeueRegular"
+  font-size: $size
+
+=serif-font($size: 1em)
+  +font-base
+  font-family: "Georgia", "Times New Roman", Times, serif
+  font-size: $size
+
+=sans-font($size: 1em)
+  +font-base
+  font-family: "Helvetica Neue Regular", "Helvetica Neue", Helvetica, Arial, sans-serif
+  font-size: $size

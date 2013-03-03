@@ -1,21 +1,41 @@
-/* Third party libraries
-@import compass
+// What is applications SCSS?
+// Here you con import all css files you need for your website
+// and link just this single file into your html head section
+// you'll cache one single file, faster and easier to be mantained
 
-// Internal variables and mixins
-@import lib/variables
-@import lib/colors
-@import lib/mixins
+// MIND THE ORDER!
 
+// 1 - IMPORT LIBRARIES AND THIRD PARTIES CSS
+/* Libraries and resets */
+@import basic/config
+
+// general configuration for colors, hive etc.
 +global-reset
 
-/* Basic styles
+// html / css compass reset
+@import basic/hive
+
+// the responsive grid
 @import basic/fonts
-@import basic/sprites
-@import basic/layout
+@import basic/tables
+@import basic/forms
+@import basic/cms
+@import basic/media-queries
 
-/* Modules
+// 2 - IMPORT THE MAIN CSS FILE OF YOUR SITE
+/* BASIC STYLES */
+@import layout
 
-/* Sections
+// 3 - IMPORT OBJECT MODULES
+// import order is important, deepest mdules first or build a folders structure for each module
+/* SITE MODULES */
+@import modules/module_example
 
-/* Themes
+// 4 - IMPORT SECTIONS
+// sections are usually templates and specific layouts of your site
+/* SITE SECTIONS */
+@import sections/home
 
+// 5 - IMPORT THEMES
+/* SITE THEMES */
+// @import "themes/blue";
