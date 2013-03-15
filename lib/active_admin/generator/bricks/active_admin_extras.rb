@@ -10,6 +10,7 @@ module ::Bricks
       gem 'activeadmin-seo', github: 'nebirhos/activeadmin-seo', branch: 'master'
       gem 'activeadmin-sortable-tree', github: 'nebirhos/activeadmin-sortable-tree', branch: 'master'
 
+      inject_into_file "config/application.rb", "    config.i18n.available_locales = [ :en ]\n", after: "config.i18n.default_locale = :en\n"
       commit_all "Added ActiveAdmin extra gems"
     end
 
