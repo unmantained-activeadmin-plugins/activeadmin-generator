@@ -3,7 +3,7 @@ module ::Bricks
     def before_bundle
       gem "activeadmin"
       gem "meta_search"
-      copy_file "config/locales/devise.it.yml"
+      gem "devise-i18n"
       @site_title = ENV['APP_NAME']
     end
 

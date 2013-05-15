@@ -3,11 +3,13 @@ module ::Bricks
     def before_bundle
       gem "rails-i18n"
       gem "slim-rails"
+      gem "showcase"
       gem "compass-rails", group: :assets
       gem "sextant", group: :development
       gem "letter_opener", group: :development
       gem "modernizr-rails", group: :assets
       gem "sprockets-image_compressor", group: :production
+
       commit_all "Added frontend gems"
 
       remove_dir 'app'

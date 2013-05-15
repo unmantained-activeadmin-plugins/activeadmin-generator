@@ -13,6 +13,7 @@ module ::Bricks
     def before_bundle
       @heroku_username = ENV['HEROKU_USERNAME'] || ask("Heroku username:")
       @heroku_password = ENV['HEROKU_PASSWORD'] || ask("Heroku password:")
+      @heroku_region = ENV['HEROKU_REGION'] || ask("Heroku region (eu or us):")
       @heroku_collaborators = ( ENV['HEROKU_COLLABORATORS'] || ask("Specify collaborators' emails:") ).split(/\s*,\s*/).map(&:strip)
 
       heroku = ::Heroku::API.new(username: @heroku_username, password: @heroku_password)
@@ -24,7 +25,7 @@ module ::Bricks
           say "App already created!"
         rescue ::Heroku::API::Errors::NotFound
           say "Name available!"
-          @heroku_app = heroku.post_app('name' => @heroku_appname)
+          @heroku_app = heroku.post_app('name' => @heroku_appname, 'region' => @heroku_region)
           say "Heroku app created!"
         rescue ::Heroku::API::Errors::Forbidden
           say "Name already taken! :("
@@ -84,6 +85,10 @@ module ::Bricks
 
       gem 'fog', group: 'production'
       gem 'pg', group: 'production'
+      gem 'unicorn'
+
+      copy_file 'config/unicorn.rb'
+      copy_file 'Procfile'
 
       commit_all "Configured Heroku and S3"
     end
