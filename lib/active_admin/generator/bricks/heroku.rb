@@ -1,4 +1,5 @@
 require 's3'
+require 'aws-sdk'
 require 'heroku-api'
 
 module ::Bricks
@@ -68,6 +69,35 @@ module ::Bricks
         @bucket = service.buckets.build(@bucket_name)
         @bucket.save(location: @bucket_location)
         say "Bucket created!"
+      end
+
+      if yes? "Do you want to create a dedicated AWS user (name '#{@bucket_name}')?"
+        iam = AWS::IAM.new(access_key_id: @access_key, secret_access_key: @access_secret)
+        user = iam.users.create(@bucket_name)
+        policy = AWS::IAM::Policy.from_json(<<JSON
+{
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "s3:ListAllMyBuckets",
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::#{@bucket_name}",
+                "arn:aws:s3:::#{@bucket_name}/*"
+            ]
+        }
+    ]
+}
+JSON
+        )
+        user.policies["PersonalBucketAccess"] = policy
+        credentials = user.access_keys.create.credentials
+        @access_key = credentials[:access_key_id]
+        @access_secret = credentials[:secret_access_key]
       end
 
       fog_regions = {
