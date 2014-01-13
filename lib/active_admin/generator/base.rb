@@ -1,5 +1,5 @@
 class Base
-  BRICKS = %w(init git clean_assets errbit frontend database heroku active_admin active_admin_extras)
+  BRICKS = %w(init git errbit frontend database heroku active_admin active_admin_extras)
   attr_reader :context
 
   def initialize(context)

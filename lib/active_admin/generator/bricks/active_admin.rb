@@ -1,8 +1,8 @@
 module ::Bricks
   class ActiveAdmin < Base
     def before_bundle
-      gem "activeadmin"
-      gem "meta_search"
+      gem 'activeadmin', github: 'gregbell/active_admin'
+      gem 'ransack'
       gem "devise-i18n"
       @site_title = ENV['APP_NAME']
     end
@@ -21,6 +21,4 @@ module ::Bricks
     end
   end
 end
-
-
 
