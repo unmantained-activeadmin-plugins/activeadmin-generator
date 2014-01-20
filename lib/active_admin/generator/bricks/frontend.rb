@@ -23,7 +23,8 @@ module ::Bricks
     end
 
     def apply_i18n_routes!
-      gem 'i18n_routing'
+      # TODO: change with this: https://github.com/enriclluelles/route_translator ?
+      gem 'i18n_routing', github: 'ncri/i18n_routing'
       copy_file "config/locales/it.yml"
       commit_all "Added i18n routes"
     end
@@ -34,6 +35,4 @@ module ::Bricks
 
   end
 end
-
-
 

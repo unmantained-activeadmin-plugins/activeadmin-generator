@@ -3,7 +3,7 @@ module ::Bricks
 
     def before_bundle
       gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly', branch: 'master'
-      gem 'activeadmin-globalize3', github: 'stefanoverna/activeadmin-globalize3', branch: 'master'
+      gem 'activeadmin-globalize', github: 'stefanoverna/activeadmin-globalize', branch: 'master'
       gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5', branch: 'master'
       gem 'activeadmin-gallery', github: 'stefanoverna/activeadmin-gallery', branch: 'master'
       gem 'activeadmin-extra', github: 'stefanoverna/activeadmin-extra', branch: 'master'
@@ -27,7 +27,4 @@ module ::Bricks
 
   end
 end
-
-
-
 
